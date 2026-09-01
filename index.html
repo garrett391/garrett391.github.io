@@ -1,37 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Shed</title>
-    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
-    <style id="expo-reset">
-      /* These styles make the body full-height */
-      html,
-      body {
-        height: 100%;
-      }
-      /* These styles disable body scrolling if you are using <ScrollView> */
-      body {
-        overflow: hidden;
-      }
-      /* These styles make the root element full-height */
-      #root {
-        display: flex;
-        height: 100%;
-        flex: 1;
-      }
-    </style>
-  <link rel="icon" href="/favicon.ico" /></head>
+<!--
+  ============================================================
+  garrett-michael.github.io  —  home
+  ============================================================
+  COLOUR SYSTEM
+  Each project carries an accent sampled from its own screenshots:
+      Health Tracker  #7C6BF5   (the app's own violet)
+      Shed            #4E9E73   (the felt green)
+      Wardrobe AI     #C08A5A   (leather / wood tones)
+      NAVAIR          neutral   — deliberately colourless, because
+                                  there's nothing to show
+  Set it per card with  style="--accent:#XXXXXX"  and everything
+  else follows. The shell stays neutral so these read as signal.
 
-  <body>
-    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
-    <!-- The root element for your Expo app. -->
-    <div id="root"></div>
-  <script src="/_expo/static/js/web/entry-48db2ca9b0fdd41191cb431d738b3e39.js" defer></script>
+  ADDING SCREENSHOTS
+  Drop any number of <figure class="shot"> into .proj-shots.
+  One or two sit side by side; three or more wrap. All of them
+  open in the lightbox on click.
+
+  EDIT:
+    - GitHub URLs (Shed, Wardrobe AI)
+    - Shed stack tags
+    - Wardrobe AI: what's unfinished + screenshots
+    - projects/shed.html and projects/wardrobe.html don't exist yet
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garrett Michael — Data Scientist</title>
+<meta name="description" content="Garrett Michael — data scientist in San Diego. Machine learning, reliability analysis, and decision support for maintenance and logistics.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Garrett Michael — Data Scientist">
+<meta property="og:description" content="Machine learning, reliability analysis, and decision support for maintenance and logistics.">
+<meta property="og:image" content="images/garrett.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="mark">GM</a>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="btn" id="pdf" type="button" title="Opens the print dialog — choose &quot;Save as PDF&quot;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      Résumé
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <div class="hero-glow" aria-hidden="true"></div>
+  <section class="hero wrap">
+    <h1 class="rv" style="--d:.04s"><span class="ln">Garrett</span><span class="ln">Michael</span></h1>
+    <div class="hero-grid">
+      <figure class="portrait rv" style="--d:.14s">
+        <img src="images/garrett.jpg" alt="Garrett Michael" width="900" height="1125">
+      </figure>
+      <div>
+        <p class="hero-title rv" style="--d:.18s">Supervisory Data Scientist, Fleet Readiness Center Southwest</p>
+        <p class="k hero-sub rv" style="--d:.21s">NAVAIR &nbsp;/&nbsp; Dept. of the Navy civilian &nbsp;/&nbsp; San Diego, California</p>
+        <p class="lede rv" style="--d:.25s">
+          Seven years building the data products that keep naval aircraft flying — <em>the databases,
+          dashboards and tooling that engineers, logisticians and financial managers use to track
+          technical directives, engineering investigations and critical parts.</em> I lead the team
+          that builds them, and I build things on weekends because I like building things.
+        </p>
+        <div class="links rv" style="--d:.3s">
+          <a href="mailto:garrett.michael@outlook.com">garrett.michael@outlook.com</a>
+          <!-- EDIT: final GitHub URL -->
+          <a href="https://github.com/Garrett391">GitHub</a>
+          <a href="https://www.linkedin.com/in/garrett-michael">LinkedIn</a>
+          <span class="static">San Diego, CA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TICKER ═══════════ -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Python</span><span>scikit-learn</span><span>SQL</span><span>Flask</span><span>Pandas</span><span>Survival analysis</span><span>Qlik Sense</span><span>Power BI</span><span>Azure</span><span>Spark</span><span>PostgreSQL</span><span>Tableau</span><span>Git</span><span>Operations research</span>
+      <span>Python</span><span>scikit-learn</span><span>SQL</span><span>Flask</span><span>Pandas</span><span>Survival analysis</span><span>Qlik Sense</span><span>Power BI</span><span>Azure</span><span>Spark</span><span>PostgreSQL</span><span>Tableau</span><span>Git</span><span>Operations research</span>
+    </div>
+  </div>
+
+  <!-- ═══════════ WORK ═══════════ -->
+  <section class="sec wrap" id="work">
+    <div class="sec-head rv">
+      <h2>Selected work</h2>
+      <span class="k">Four projects</span>
+    </div>
+    <p class="sec-note rv">
+      Government work is described without specifics — no data, no platforms, no program names.
+      Everything else links to source.
+    </p>
+
+    <div class="projects">
+
+      <!-- ── HEALTH TRACKER ── -->
+      <article class="proj rv" style="--accent:#7C6BF5">
+        <div class="proj-feature">
+          <div class="proj-copy">
+            <div class="proj-head">
+              <span class="chip solid">Deployed</span>
+              <span class="chip">Private &mdash; screenshots only</span>
+              <h3>C&amp;G Health Tracker</h3>
+            </div>
+            <dl class="pae">
+              <div><dt>Problem</dt><dd>My wife and I wanted one place for meals, workouts, sleep
+                and hydration. Everything we tried was single-user, subscription-gated, or missing
+                half of what we cared about.</dd></div>
+              <div><dt>Approach</dt><dd>A Flask app on Azure App Service backed by Azure SQL, with
+                five modules and a profile for each of us. Nutrition can be estimated from a plain
+                description of a meal by way of an LLM call when the food database comes up
+                short.</dd></div>
+              <div><dt>Result</dt><dd><b>In daily use by two people.</b> I own the whole thing —
+                schema, migrations, Bicep templates, hosting. It holds our personal health records,
+                so it stays on a private deployment.</dd></div>
+            </dl>
+            <ul class="tags"><li>Python 3.12</li><li>Flask 3.1</li><li>Azure SQL</li><li>pyodbc</li><li>Bicep</li><li>gunicorn</li><li>OpenAI API</li></ul>
+            <a class="more" href="projects/health.html">Read the full write-up</a>
+          </div>
+          <div class="proj-shots">
+            <figure class="shot">
+              <img src="images/health.jpg" alt="C&amp;G Health Tracker home screen with profile selection and module list">
+              <figcaption>Home &amp; profile select</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── SHED ── -->
+      <article class="proj rv" style="--accent:#4E9E73">
+        <div class="proj-feature flip">
+          <div class="proj-copy">
+            <div class="proj-head">
+              <span class="chip solid">Personal</span>
+              <h3>Shed</h3>
+              <a class="proj-src play" href="shed/">Play in browser</a>
+              <!-- EDIT: add back once the Expo source is in its own public repo.
+                   Do NOT point this at /shed/ — that folder is build output. -->
+            </div>
+            <dl class="pae">
+              <div><dt>Problem</dt><dd>Shed — also called Palace or Karma — is easy to play and
+                miserable to teach. Every group runs different house rules and no two groups agree
+                on them.</dd></div>
+              <div><dt>Approach</dt><dd>A React Native app whose game engine is a pure, serialisable
+                function: <b>playCards(state, cards) returns new state plus events</b>, with no
+                React, no I/O and no mutation. Rule variants are presets over that engine rather
+                than branches through it, so six wildly different rulesets share one code path.</dd></div>
+              <div><dt>Result</dt><dd>Runs on iOS, Android and web — <b>playable in a browser right now</b>. 57 engine unit tests plus a
+                fuzz harness that plays thousands of random games across every preset, checking
+                that cards are never created or destroyed and that every game terminates.</dd></div>
+            </dl>
+            <ul class="tags"><li>React Native</li><li>Expo</li><li>TypeScript</li><li>Zustand</li><li>Jest</li><li>Pure game engine</li></ul>
+            <a class="more" href="projects/shed.html">Read the full write-up</a>
+          </div>
+          <div class="proj-shots">
+            <figure class="shot">
+              <img src="images/shed-menu.jpg" alt="Shed main menu with campaign, free play, tutorial and rules">
+              <figcaption>Menu</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="images/shed-game.jpg" alt="Shed gameplay showing players, draw pile and hand">
+              <figcaption>Mid-game</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── WARDROBE AI ── -->
+      <!-- EDIT: when the screenshots arrive, move this into a .proj-feature like the two
+           above and drop the figures into .proj-shots. -->
+      <article class="proj rv" style="--accent:#C08A5A">
+        <div class="proj-quiet">
+          <div class="proj-head">
+            <span class="chip">In progress</span>
+            <h3>Wardrobe AI</h3>
+            <!-- EDIT: add a source link once the repo is public.
+                 Check for a committed OpenAI key first. -->
+          </div>
+          <dl class="pae">
+            <div><dt>Problem</dt><dd>I own more clothes than outfit ideas, and generic style advice
+              doesn't know what's actually in my closet.</dd></div>
+            <div><dt>Approach</dt><dd>Photograph each item and store it in SQLite tagged by colour
+              and category, then hand the catalogue plus an anchor piece and occasion filters to an
+              LLM that proposes complete outfits.</dd></div>
+            <!-- EDIT: say plainly what's left -->
+            <div><dt>Result</dt><dd>Cataloguing and generation run end to end locally.
+              Still unfinished: &mdash;</dd></div>
+          </dl>
+          <ul class="tags"><li>Python</li><li>Flask</li><li>SQLite</li><li>OpenAI API</li></ul>
+        </div>
+      </article>
+
+      <!-- ── FRCSW — no accent, on purpose ── -->
+      <article class="proj rv" style="--accent:#4A4A54">
+        <div class="proj-quiet">
+          <div class="proj-head">
+            <span class="chip">Government &mdash; details omitted</span>
+            <h3>Data products for the Fleet Support Teams</h3>
+          </div>
+          <dl class="pae">
+            <div><dt>Problem</dt><dd>The Fleet Support Teams — the engineers, logisticians,
+              financial managers and leadership who keep aircraft in service — track technical
+              directives, engineering investigations, requisitions, first articles, critical items
+              and support equipment. That work had been living in scattered spreadsheets and
+              one-off queries, each with its own owner and its own version of the truth.</dd></div>
+            <div><dt>Approach</dt><dd>I supervise <b>six developers and analysts</b> who build the
+              data products those teams work in day to day — more than ten databases and ten Qlik
+              Sense dashboards, plus the data models underneath them. I set direction, review the
+              technical work, and carry results up to executive leadership.</dd></div>
+            <div><dt>Result</dt><dd>Four audiences with genuinely different questions — engineers,
+              logisticians, business financial managers and leadership — now pull from the same
+              underlying data instead of maintaining four versions of it. Specifics of scope and
+              effect are omitted here.</dd></div>
+          </dl>
+          <ul class="tags"><li>Team of 6</li><li>Qlik Sense</li><li>SQL</li><li>Python</li><li>Power BI</li><li>Data modelling</li><li>Executive reporting</li></ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══════════ EXPERIENCE ═══════════ -->
+  <section class="sec wrap" id="experience">
+    <div class="sec-head rv">
+      <h2>Experience</h2>
+      <span class="k">Seven years</span>
+    </div>
+    <div class="rv">
+      <p class="org-line">Fleet Readiness Center Southwest &nbsp;/&nbsp; NAVAIR &nbsp;/&nbsp; Civilian, Dept. of the Navy &nbsp;/&nbsp; San Diego &nbsp;/&nbsp; Sep 2019 &ndash; Present</p>
+      <div class="roles">
+        <div class="role now">
+          <p class="role-when">Jun 2025 &mdash; Present</p>
+          <div>
+            <h4>Supervisory Data Scientist</h4>
+            <p>Lead a team of six developers and analysts building the data products behind the
+               Fleet Support Teams' engineering and logistics workflows — more than ten databases
+               and ten Qlik Sense dashboards. Set technical direction, review the team's work, and
+               present to stakeholders ranging from engineers to executive leadership.</p>
+          </div>
+        </div>
+        <div class="role">
+          <p class="role-when">Oct 2022 &mdash; Jun 2025</p>
+          <div>
+            <h4>Data Scientist</h4>
+            <!-- EDIT: name one product you built and who used it -->
+            <p>Built and maintained the databases and dashboards behind technical directives,
+               engineering investigations, first articles and critical item management. Owned the
+               data model and the reporting layer end to end.</p>
+          </div>
+        </div>
+        <div class="role">
+          <p class="role-when">Sep 2019 &mdash; Oct 2022</p>
+          <div>
+            <h4>Operations Research Analyst</h4>
+            <!-- EDIT -->
+            <p>Cleaned, analyzed and visualized maintenance and logistics data. Designed databases
+               and internal tools with Access, VBA and SQL, and built the reporting layer analysts
+               used daily.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BACKGROUND ═══════════ -->
+  <section class="sec wrap" id="background">
+    <div class="sec-head rv"><h2>Background</h2></div>
+    <div class="cols rv">
+      <div>
+        <p class="sub">Toolkit</p>
+        <div class="kit">
+          <div class="kit-row"><p class="kit-key">Languages</p><p class="kit-val">Python &middot; SQL &middot; VBA</p></div>
+          <div class="kit-row"><p class="kit-key">Analysis</p><p class="kit-val">Pandas &middot; NumPy &middot; scikit-learn &middot; statistical modelling &middot; operations research</p></div>
+          <div class="kit-row"><p class="kit-key">Building</p><p class="kit-val">Flask &middot; Azure SQL &middot; SQLite &middot; PostgreSQL &middot; Bicep &middot; OpenAI API</p></div>
+          <div class="kit-row"><p class="kit-key">Data</p><p class="kit-val">Spark &middot; Dask &middot; Parquet &middot; AWS</p></div>
+          <div class="kit-row"><p class="kit-key">Microsoft</p><p class="kit-val">Azure App Service &middot; Power BI &middot; Power Apps &middot; Power Automate &middot; Power Query &middot; Access</p></div>
+          <div class="kit-row"><p class="kit-key">Viz</p><p class="kit-val">Tableau &middot; Qlik Sense</p></div>
+          <div class="kit-row"><p class="kit-key">Tooling</p><p class="kit-val">Git &middot; GitLab &middot; Jupyter</p></div>
+          <div class="kit-row"><p class="kit-key">Cert</p><p class="kit-val">Tableau Desktop Specialist, 2020</p></div>
+        </div>
+      </div>
+      <div>
+        <p class="sub">Education</p>
+        <div class="edu">
+          <h4>UC San Diego &mdash; Jacobs School of Engineering</h4>
+          <span class="k">2021 &ndash; 2023 &nbsp;/&nbsp; 3.8 GPA</span>
+          <p>M.A.S., Data Science and Engineering</p>
+        </div>
+        <div class="edu">
+          <h4>UC Santa Barbara</h4>
+          <span class="k">2016 &ndash; 2019 &nbsp;/&nbsp; 3.6 GPA</span>
+          <p>B.S., Mathematical Sciences</p>
+        </div>
+        <div class="edu">
+          <h4>Antelope Valley College</h4>
+          <span class="k">2014 &ndash; 2016</span>
+          <p>A.S., Mathematics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="cta wrap" id="contact">
+    <div class="rv">
+      <h2>Let's talk.</h2>
+      <p>Open to data science and applied ML roles in San Diego or remote.
+         Email is the fastest way to reach me.</p>
+      <div class="links">
+        <a href="mailto:garrett.michael@outlook.com">garrett.michael@outlook.com</a>
+        <a href="https://www.linkedin.com/in/garrett-michael">LinkedIn</a>
+        <a href="https://github.com/Garrett391">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot wrap">
+    <span class="k">Updated August 2026</span>
+    <span class="k">Built by hand &middot; No trackers</span>
+  </footer>
+
+</main>
+
+<!-- lightbox -->
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  projects/health.html — the template for every project page
+  ============================================================
+  Copy this file to make projects/shed.html and projects/wardrobe.html.
+  Change:
+    - <title>, <meta name="description">
+    - --accent on <body>  (Shed #4E9E73, Wardrobe #C08A5A)
+    - the four .fact tiles
+    - the gallery figures
+    - the prose
+
+  NOTE: I left the mental-health module described as a daily
+  check-in with mood/anxiety/energy scales. Your README also
+  mentions a therapy toggle and exporting for a therapist —
+  true and a nice feature, but it says something personal about
+  you and Crystal on a page recruiters read. Your call; add it
+  back if you want it there.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C&amp;G Health Tracker — Garrett Michael</title>
+<meta name="description" content="A Flask and Azure SQL health tracker built for two people: meals, workouts, sleep, hydration and a daily check-in.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body style="--accent:#7C6BF5">
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="../index.html" class="mark">GM</a>
+    <nav class="nav">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#background">Background</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <button class="btn" id="pdf" type="button" title="Opens the print dialog — choose &quot;Save as PDF&quot;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      Résumé
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <div class="detail-glow" aria-hidden="true"></div>
+  <section class="detail-hero wrap">
+    <a class="back" href="../index.html#work">All work</a>
+    <div class="proj-head" style="margin-bottom:0">
+      <span class="chip solid">Deployed</span>
+      <span class="chip">Private &mdash; screenshots only</span>
+    </div>
+    <h1>C&amp;G Health Tracker</h1>
+    <p class="lede">A Flask app my wife and I use every day to track meals, workouts, sleep,
+       hydration and how we're actually doing. Five modules, one Azure SQL database, no
+       subscription, and nothing sold to anyone.</p>
+
+    <div class="facts">
+      <div class="fact"><span class="k">Status</span><p>Live, in daily use</p></div>
+      <div class="fact"><span class="k">Role</span><p>Sole developer</p></div>
+      <!-- EDIT: how long has it been running? -->
+      <div class="fact"><span class="k">Running since</span><p>&mdash;</p></div>
+      <div class="fact"><span class="k">Users</span><p>Two</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" style="padding-top:0">
+    <!-- EDIT: add more <figure class="shot"> here — meals, workouts, dream log,
+         the nutrition summary. They'll lay themselves out and open in the lightbox. -->
+    <div class="gallery rv">
+      <figure class="shot">
+        <img src="../images/health.jpg" alt="Home screen with profile selection and the five modules" width="560" height="1074">
+        <figcaption>Home &amp; profile select</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec wrap" style="padding-top:0; border-top:1px solid var(--edge)">
+    <div class="detail-body">
+      <div class="prose rv">
+
+        <h3>Why it exists</h3>
+        <p>We wanted one place for the handful of things we actually care about tracking.
+           Everything on the market was single-user, gated behind a subscription, or covered
+           three of our five needs and padded the rest with things we'd never open. Building it
+           was faster than continuing to look.</p>
+
+        <h3>What it does</h3>
+        <ul class="feature-list">
+          <li><span class="dot"></span><span><b>Daily check-in.</b> A one-minute log with optional
+            1–5 scales for mood, anxiety and energy, quick chips for what helped that day, and a
+            free-text journal. The history view shows trend averages, and everything exports to
+            CSV.</span></li>
+          <li><span class="dot"></span><span><b>Meals and nutrition.</b> Search a food database,
+            log a meal, and get a daily nutrition summary. When the database doesn't have
+            something, an LLM call estimates the nutrition from a plain description of what you
+            ate.</span></li>
+          <li><span class="dot"></span><span><b>Workouts.</b> Plan a session by muscle group, add
+            exercises and sets, record weight and reps per set, and review the history for any
+            exercise with demo animations.</span></li>
+          <li><span class="dot"></span><span><b>Dream log.</b> Records dreams alongside sleep
+            quality and which sleep aids were used, so it's possible to see whether any of them
+            correlate with anything.</span></li>
+          <li><span class="dot"></span><span><b>Water.</b> Hydration logging with presets, because
+            the fastest possible path is the only one that gets used.</span></li>
+        </ul>
+
+        <h3>How it's built</h3>
+        <p>Python 3.12 and Flask 3.1, talking to an <strong>Azure SQL database</strong> through
+           <code>pyodbc</code> and ODBC Driver 18. Served by <code>gunicorn</code> on Azure App
+           Service. The front end is vendored Bootstrap 5 with a custom dark theme layered over it,
+           rendered through Jinja templates. Infrastructure is <strong>Bicep</strong>, so the whole
+           environment provisions and deploys with <code>azd up</code>.</p>
+        <p>It started from Microsoft's Flask-on-App-Service quickstart. The deployment scaffolding
+           from that sample is still in the repo and still works — everything above it is mine.</p>
+
+        <h3>Notes from building it</h3>
+        <p>The check-in module has the most interesting schema: a log table, a coping-strategies
+           lookup, a junction table between them, and a view that flattens the whole thing for the
+           trend queries. Normalising it properly meant the summary view stayed simple instead of
+           turning into a pile of string parsing.</p>
+        <p>There's no migration framework. Schema changes are numbered <code>.sql</code> files run
+           by hand, with one file kept as the current source of truth. For a two-person app that's
+           the right amount of process — but it's the first thing I'd replace if anyone else ever
+           had to deploy it.</p>
+
+        <h3>What I'd change</h3>
+        <p><strong>Authentication.</strong> Right now you pick a name on the home page and see that
+           person's data. That's fine for a private deployment on a trusted network and it's why
+           this app isn't linked from anywhere — the journal in particular is sensitive. Real access
+           control is the prerequisite for it ever being exposed.</p>
+        <p><strong>Connection handling.</strong> Connections open and close per request, and a query
+           that raises currently skips its close. Harmless at two users, wrong at twenty.</p>
+        <p><strong>The nutrition estimates are estimates.</strong> They come from a language model
+           reading a description of a meal. Close enough to be useful, not close enough to be
+           trusted, and the UI should say so more loudly than it does.</p>
+
+      </div>
+
+      <aside class="side rv">
+        <div class="side-block">
+          <p class="sub">Stack</p>
+          <ul class="stack-list">
+            <li>Python 3.12</li><li>Flask 3.1</li><li>Azure SQL</li><li>pyodbc</li>
+            <li>Bootstrap 5</li><li>Jinja</li><li>gunicorn</li><li>Bicep</li>
+            <li>Azure App Service</li><li>OpenAI API</li>
+          </ul>
+        </div>
+        <div class="side-block">
+          <p class="sub">Source</p>
+          <p class="note">The repository is private — it contains our personal health records.
+             Happy to walk through the code in an interview.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta wrap">
+    <div class="rv">
+      <h2>Let's talk.</h2>
+      <p>Open to data science and applied ML roles in San Diego or remote.</p>
+      <div class="links">
+        <a href="mailto:garrett.michael@outlook.com">garrett.michael@outlook.com</a>
+        <a href="https://www.linkedin.com/in/garrett-michael">LinkedIn</a>
+        <a href="../index.html#work">All work</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot wrap">
+    <span class="k">Updated August 2026</span>
+    <span class="k">Built by hand &middot; No trackers</span>
+  </footer>
+
+</main>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>

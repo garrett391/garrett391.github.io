@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  projects/shed.html
+  ============================================================
+  EDIT:
+    - repo URL (three places: header chip link + sidebar + facts)
+    - v0.2.6 — bump when you ship
+
+  I left two things out on purpose:
+    - The game's cruder name. Your README can say it; a page
+      recruiters read probably shouldn't.
+    - "The 69" from the variant list. The other five presets
+      carry the point fine.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shed — Garrett Michael</title>
+<meta name="description" content="A cross-platform card game built on a pure, fully tested TypeScript game engine. React Native, Expo, 57 unit tests and a fuzz harness.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600..900&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body style="--accent:#4E9E73">
+
+<header class="topbar">
+  <div class="wrap">
+    <a href="../index.html" class="mark">GM</a>
+    <nav class="nav">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#background">Background</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <button class="btn" id="pdf" type="button" title="Opens the print dialog — choose &quot;Save as PDF&quot;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      Résumé
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <div class="detail-glow" aria-hidden="true"></div>
+  <section class="detail-hero wrap">
+    <a class="back" href="../index.html#work">All work</a>
+    <div class="proj-head" style="margin-bottom:0">
+      <span class="chip solid">Personal</span>
+      <span class="chip">iOS &middot; Android &middot; Web</span>
+    </div>
+    <h1>Shed</h1>
+    <p class="lede">A card game everyone in my family plays with different rules, rebuilt so the
+       rules are data instead of code. The interesting part isn't the game — it's the engine
+       underneath, which is pure, serialisable, and tested harder than the app around it.</p>
+    <div class="links" style="margin-top:28px">
+      <a href="../shed/">Play in browser</a>
+      <!-- EDIT: add "Source on GitHub" here once the Expo project has its own
+           public repo. The /shed/ folder is the built bundle, not the source. -->
+    </div>
+
+    <div class="facts">
+      <div class="fact"><span class="k">Status</span><p>Live on web, v0.2.6</p></div>
+      <div class="fact"><span class="k">Role</span><p>Sole developer</p></div>
+      <div class="fact"><span class="k">Engine tests</span><p>57 + fuzz harness</p></div>
+      <div class="fact"><span class="k">Rule presets</span><p>Six</p></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" style="padding-top:0">
+    <!-- EDIT: add tutorial / swap screen / game-over shots here if you have them -->
+    <div class="gallery rv">
+      <figure class="shot">
+        <img src="../images/shed-menu.jpg" alt="Main menu with campaign, free play, tutorial and rules">
+        <figcaption>Menu</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="../images/shed-game.jpg" alt="Gameplay screen showing players, draw pile, burn pile and hand">
+        <figcaption>Mid-game</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec wrap" style="padding-top:0; border-top:1px solid var(--edge)">
+    <div class="detail-body">
+      <div class="prose rv">
+
+        <h3>Why it exists</h3>
+        <p>Shed — Palace, Karma, a few other names — is trivial to play and genuinely hard to
+           teach. Every group has its own house rules and every group is certain theirs are the
+           real ones. I wanted a version that could hold all of them at once, and a way to settle
+           arguments without anyone reciting rules from memory.</p>
+
+        <h3>The engine is pure, and that's the whole design</h3>
+        <p>All game logic lives in <code>src/engine/</code> and imports nothing — no React, no
+           storage, no I/O. The core call is <code>playCards(state, playerIdx, cardIds)</code>,
+           which returns <strong>a new state plus an array of events</strong> and mutates nothing.</p>
+        <p>Three things fall out of that. Every rule becomes testable in isolation. The bot consumes
+           exactly the same <code>GameState</code> the UI does, so it can be swapped for a search
+           algorithm or a remote player without the engine noticing. And because the state is
+           serialisable, the same engine that runs on the phone today could run authoritatively on
+           a server tomorrow — clients would send intent and render whatever state came back.</p>
+        <p>A Zustand store is the only mutable thing in the app. It wraps the engine and holds
+           the UI-only concerns: which cards are selected, whether the current player has revealed
+           their hand past the pass-the-device privacy gate, and the last batch of events for the
+           in-game banner.</p>
+
+        <h3>Rules as data</h3>
+        <p>The full ruleset is in there — meets-or-beats, the power cards (2 resets, 7 forces the
+           next play low, 8 is invisible, 10 burns the pile), four-of-a-kind burns with 8s in the
+           middle still counting, and the three phases from hand to face-up to a blind face-down
+           flip.</p>
+        <p>On top of that sit six named presets — Justin's Schism, Super Tens, Chaos Shed, OFCOM
+           Standard, the Backpacker's Codex and one more — that reconfigure the engine rather than
+           branch through it. The app generates a human-readable diff of whatever variant is
+           active, so nobody has to remember what they agreed to.</p>
+
+        <h3>Testing is where the work went</h3>
+        <p><strong>57 unit tests</strong> cover every power card, every variant, and the edge cases
+           that actually bite: an 8 inside a four-of-a-kind, a 10 played on a 7, a failed face-down
+           flip, and who starts when nobody holds a non-power card.</p>
+        <p>Underneath those is a <strong>fuzz harness</strong> that plays thousands of random games
+           across every preset and asserts two invariants: cards are never created or destroyed,
+           and every game terminates. Those are the two properties that make a card game engine
+           trustworthy, and neither is something you can reach by writing more example tests.</p>
+
+        <h3>The bot</h3>
+        <p>Roughly fifty lines of heuristics, deliberately small and self-contained. It plays a
+           reasonable game and loses to anyone paying attention, which is the correct difficulty
+           for teaching someone the rules. The interface is narrow enough that replacing it with
+           a real search is an afternoon rather than a refactor.</p>
+
+        <h3>What's deliberately missing</h3>
+        <p>No online multiplayer, no accounts, no stats or leaderboards, no spectator mode. The
+           engine was built so those stay cheap to add later — that's the reason it's pure — but
+           none of them make the game better at a kitchen table, which is the only place it gets
+           played.</p>
+
+      </div>
+
+      <aside class="side rv">
+        <div class="side-block">
+          <p class="sub">Stack</p>
+          <ul class="stack-list">
+            <li>React Native</li><li>Expo</li><li>Expo Router</li><li>TypeScript (strict)</li>
+            <li>Zustand</li><li>Jest</li>
+          </ul>
+        </div>
+        <div class="side-block">
+          <p class="sub">Source</p>
+          <!-- EDIT: swap this for a GitHub link once the source repo is public -->
+          <p class="note">Source repository going public shortly &mdash; the engine, the tests and
+             the fuzz harness all live in it. In the meantime the game is
+             <a href="../shed/">playable here</a>.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta wrap">
+    <div class="rv">
+      <h2>Let's talk.</h2>
+      <p>Open to data science and applied ML roles in San Diego or remote.</p>
+      <div class="links">
+        <a href="mailto:garrett.michael@outlook.com">garrett.michael@outlook.com</a>
+        <a href="https://www.linkedin.com/in/garrett-michael">LinkedIn</a>
+        <a href="../index.html#work">All work</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot wrap">
+    <span class="k">Updated August 2026</span>
+    <span class="k">Built by hand &middot; No trackers</span>
+  </footer>
+
+</main>
+
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged screenshot" hidden>
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <p class="lb-cap" id="lbCap"></p>
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>
