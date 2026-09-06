@@ -60,6 +60,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
 .nav a{font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
   color:var(--ash); border:0}
 .nav a:hover{color:var(--bone)}
+.navtoggle{display:none}
 .btn{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:11px;
   letter-spacing:.13em; text-transform:uppercase; color:var(--void); background:var(--bone);
   border:1px solid var(--bone); border-radius:100px; padding:9px 17px; cursor:pointer;
@@ -290,7 +291,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
 @media (max-width:900px){
   :root{--pad:22px}
   .nav{gap:18px}
-  .nav a{font-size:10px; letter-spacing:.1em}
   .hero{padding:56px 0 46px}
   .hero h1{margin-bottom:36px}
   .hero-grid{grid-template-columns:1fr; gap:30px}
@@ -313,23 +313,34 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
   .side{position:static}
 }
 
-/* Phones: one row. Tap targets come from padding, not from extra width —
-   .nav a goes from a 14px-tall hit area to ~44px. The Résumé label is
-   dropped to the icon alone to buy back the horizontal room. */
+/* Phones: the bar stays slim — mark, hamburger, Résumé icon — and the
+   nav becomes a panel underneath it. Links are full size here because
+   they get a whole row each, which is the point of the trade. */
 @media (max-width:700px){
-  .topbar .wrap{height:auto; gap:0 8px; padding-top:0; padding-bottom:0}
+  .topbar .wrap{height:auto; gap:0 2px; padding-top:0; padding-bottom:0}
   .mark{padding:13px 2px}
-  .nav{flex:1 1 auto; min-width:0; margin-left:0; gap:0; justify-content:space-between}
-  .nav a{font-size:10px; letter-spacing:.04em; padding:15px 4px}
   .btn{padding:11px 12px; gap:0}
   .btn-label{display:none}
-}
-/* Below ~370px the four labels can't share a row with the mark and the
-   button. Let the nav wrap to its own full-width row; targets stay 44px. */
-@media (max-width:370px){
-  .topbar .wrap{flex-wrap:wrap}
-  .btn{order:2; margin-left:auto}
-  .nav{order:3; flex:1 1 100%; justify-content:space-between}
+
+  .navtoggle{display:inline-flex; align-items:center; justify-content:center;
+    width:44px; height:44px; padding:0; margin-left:auto;
+    background:none; border:0; color:var(--ash); cursor:pointer}
+  .navtoggle svg{width:19px; height:19px}
+  .navtoggle .ico-close{display:none}
+  .navtoggle[aria-expanded="true"]{color:var(--bone)}
+  .navtoggle[aria-expanded="true"] .ico-menu{display:none}
+  .navtoggle[aria-expanded="true"] .ico-close{display:block}
+
+  .nav{display:none; position:absolute; left:0; right:0; top:100%;
+    flex-direction:column; gap:0; margin:0; padding:2px var(--pad) 12px;
+    background:rgba(9,9,10,.97);
+    -webkit-backdrop-filter:blur(14px) saturate(120%);
+    backdrop-filter:blur(14px) saturate(120%);
+    border-bottom:1px solid var(--edge)}
+  .nav.open{display:flex}
+  .nav a{font-size:15px; letter-spacing:.11em; color:var(--bone);
+    padding:16px 2px; border-bottom:1px solid var(--edge)}
+  .nav a:last-child{border-bottom:0}
 }
 
 /* ═══════════════════  PRINT → RESUME  ═══════════════════ */

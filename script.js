@@ -9,6 +9,30 @@
   var pdf = document.getElementById('pdf');
   if (pdf) pdf.addEventListener('click', function () { window.print(); });
 
+  /* ── mobile menu ──
+     Below 700px the nav is a panel under the bar; above it the CSS
+     puts the list back inline, so a resize needs no cleanup here. */
+  var navToggle = document.getElementById('navToggle'),
+      nav = document.getElementById('nav');
+  if (navToggle && nav) {
+    var setNav = function (open) {
+      nav.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    navToggle.addEventListener('click', function () {
+      setNav(!nav.classList.contains('open'));
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') setNav(false);
+    });
+    document.addEventListener('click', function (e) {
+      if (!nav.contains(e.target) && !navToggle.contains(e.target)) setNav(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setNav(false);
+    });
+  }
+
   /* ── scroll reveal ──
      Content is visible by default; the .js class on <html> is what
      hides it, so nothing disappears if this script fails to load. */

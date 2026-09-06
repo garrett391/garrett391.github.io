@@ -23,12 +23,20 @@
 <header class="topbar">
   <div class="wrap">
     <a href="#top" class="mark">GM</a>
-    <nav class="nav">
+    <nav class="nav" id="nav">
       <a href="#work">Work</a>
       <a href="#experience">Experience</a>
       <a href="#background">Background</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="navtoggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg class="ico-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/>
+      </svg>
+      <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M5 5l14 14"/><path d="M19 5L5 19"/>
+      </svg>
+    </button>
     <button class="btn" id="pdf" type="button" aria-label="Résumé — opens the print dialog" title="Opens the print dialog — choose &quot;Save as PDF&quot;">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
