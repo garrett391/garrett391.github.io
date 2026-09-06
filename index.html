@@ -105,9 +105,10 @@
                 Everything we tried was single-user, subscription-gated, or missing half of what
                 we cared about.</dd></div>
               <div><dt>Approach</dt><dd>A Flask app on Azure App Service backed by Azure SQL, with
-                five modules and a profile for each of us. Nutrition can be estimated from a plain
-                description of a meal by way of an LLM call when the food database comes up
-                short.</dd></div>
+                a profile for each of us and five modules — meals and nutrition, workouts, sleep and
+                dreams, hydration, and a daily check-in. The scope is deliberately broad: one place
+                for everything health-related, not a better version of any one tracker. It grew a
+                module at a time, out of a local Access database.</dd></div>
               <div><dt>Result</dt><dd><b>In daily use by two people.</b> I own the whole thing —
                 schema, migrations, Bicep templates, hosting. It holds our personal health records,
                 so it stays on a private deployment.</dd></div>

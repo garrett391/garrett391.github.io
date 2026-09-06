@@ -52,6 +52,7 @@
     <div class="facts">
       <div class="fact"><span class="k">Status</span><p>Live, in daily use</p></div>
       <div class="fact"><span class="k">Role</span><p>Sole developer</p></div>
+      <div class="fact"><span class="k">Origin</span><p>A local Access database</p></div>
       <div class="fact"><span class="k">Users</span><p>Two</p></div>
     </div>
   </section>
@@ -101,8 +102,12 @@
            Service. The front end is vendored Bootstrap 5 with a custom dark theme layered over it,
            rendered through Jinja templates. Infrastructure is <strong>Bicep</strong>, so the whole
            environment provisions and deploys with <code>azd up</code>.</p>
-        <p>It started from Microsoft's Flask-on-App-Service quickstart. The deployment scaffolding
-           from that sample is still in the repo and still works — everything above it is mine.</p>
+        <p>It didn't start as a Flask app. The first version was a local Access database doing
+           rudimentary meal logging. I migrated that to <strong>Azure SQL</strong>, then worked out
+           how to host a web app on App Service, and from there the modules went in one at a time —
+           workouts first. The Flask scaffolding came from Microsoft's Flask-on-App-Service
+           quickstart; that deployment sample is still in the repo and still works, and everything
+           above it is mine.</p>
 
         <h3>Notes from building it</h3>
         <p>The check-in module has the most interesting schema: a log table, a coping-strategies
