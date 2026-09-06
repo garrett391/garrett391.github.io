@@ -313,12 +313,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
   .side{position:static}
 }
 
+/* Phones: one row. Tap targets come from padding, not from extra width —
+   .nav a goes from a 14px-tall hit area to ~44px. The Résumé label is
+   dropped to the icon alone to buy back the horizontal room. */
 @media (max-width:700px){
-  .topbar .wrap{flex-wrap:wrap; height:auto; gap:0 18px;
-    padding-top:10px; padding-bottom:10px}
+  .topbar .wrap{height:auto; gap:0 8px; padding-top:0; padding-bottom:0}
+  .mark{padding:13px 2px}
+  .nav{flex:1 1 auto; min-width:0; margin-left:0; gap:0; justify-content:space-between}
+  .nav a{font-size:10px; letter-spacing:.04em; padding:15px 4px}
+  .btn{padding:11px 12px; gap:0}
+  .btn-label{display:none}
+}
+/* Below ~370px the four labels can't share a row with the mark and the
+   button. Let the nav wrap to its own full-width row; targets stay 44px. */
+@media (max-width:370px){
+  .topbar .wrap{flex-wrap:wrap}
   .btn{order:2; margin-left:auto}
-  .nav{order:3; width:100%; margin:11px 0 0; gap:0; justify-content:space-between}
-  .nav a{font-size:10px; letter-spacing:.06em}
+  .nav{order:3; flex:1 1 100%; justify-content:space-between}
 }
 
 /* ═══════════════════  PRINT → RESUME  ═══════════════════ */
