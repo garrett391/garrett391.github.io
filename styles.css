@@ -236,8 +236,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
 .fact{background:var(--panel); padding:20px 22px}
 .fact .k{display:block; margin-bottom:7px}
 .fact p{color:var(--bone); font-size:1rem; font-weight:500}
-.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:20px}
-.gallery .shot img{filter:none}
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:20px; justify-items:center}
+.gallery .shot{display:flex; flex-direction:column; align-items:center}
+.gallery .shot img{filter:none; width:auto; max-width:100%; max-height:70vh}
 .detail-body{display:grid; grid-template-columns:1fr 300px; gap:64px; align-items:start}
 .prose{max-width:66ch; display:flex; flex-direction:column; gap:20px; font-size:1.03rem}
 .prose h3{font-family:var(--display); font-size:1.5rem; letter-spacing:-.03em; margin-top:20px}
