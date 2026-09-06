@@ -150,11 +150,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
   color:var(--ash-dim); padding-top:4px}
 .pae dd{font-size:1rem; color:var(--ash)}
 .pae dd b{color:var(--bone); font-weight:500}
-.tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:26px}
+.tags{display:flex; flex-wrap:wrap; margin-top:26px}
 .tags li{font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; color:var(--ash-dim);
-  border:1px solid var(--edge); border-radius:100px; padding:4px 11px; transition:border-color .35s}
-.proj:hover .tags li{border-color:var(--edge-lit);
-  border-color:color-mix(in srgb, var(--accent) 26%, var(--edge))}
+  transition:color .35s}
+.tags li::after{content:"·"; margin:0 9px; color:var(--edge-lit)}
+.tags li:last-child::after{content:""}
+.proj:hover .tags li{color:var(--ash)}
 .more{display:inline-block; margin-top:26px; font-family:var(--mono); font-size:11px;
   letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
   border:0; border-bottom:1px solid var(--edge-lit);
@@ -253,9 +254,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
   align-self:start; margin-top:9px}
 .side{position:sticky; top:88px; display:flex; flex-direction:column; gap:30px}
 .side-block .sub{margin-bottom:18px}
-.stack-list{display:flex; flex-wrap:wrap; gap:7px}
-.stack-list li{font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; color:var(--ash);
-  border:1px solid var(--edge); border-radius:100px; padding:4px 11px}
+.stack-list{display:flex; flex-wrap:wrap}
+.stack-list li{font-family:var(--mono); font-size:10.5px; letter-spacing:.07em; color:var(--ash)}
+.stack-list li::after{content:"·"; margin:0 9px; color:var(--edge-lit)}
+.stack-list li:last-child::after{content:""}
 .note{border-left:2px solid var(--accent); padding:2px 0 2px 20px; color:var(--ash); font-size:.99rem}
 
 /* ═══════════════════  LIGHTBOX  ═══════════════════ */
@@ -348,9 +350,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--bone); outline-offs
   .pae>div{grid-template-columns:52pt 1fr; gap:10pt}
   .pae dt{font-size:7.4pt; padding-top:1pt}
   .pae dd{font-size:9.2pt}
-  .tags{margin-top:5pt; gap:4pt}
+  .tags{margin-top:5pt; gap:0}
   .tags li{font-size:7.6pt; padding:0; border:0; color:#575757}
-  .tags li::after{content:" ·"}
+  .tags li::after{content:"·"; margin:0 4pt; color:#8a8a8a}
   .tags li:last-child::after{content:""}
   .role{grid-template-columns:74pt 1fr; gap:14pt; padding:7pt 0; break-inside:avoid}
   .role h4{font-size:10.5pt; margin-bottom:2pt}
