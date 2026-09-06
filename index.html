@@ -1,30 +1,4 @@
 <!DOCTYPE html>
-<!--
-  ============================================================
-  garrett-michael.github.io  —  home
-  ============================================================
-  COLOUR SYSTEM
-  Each project carries an accent sampled from its own screenshots:
-      Health Tracker  #7C6BF5   (the app's own violet)
-      Shed            #4E9E73   (the felt green)
-      Wardrobe AI     #C08A5A   (leather / wood tones)
-      NAVAIR          neutral   — deliberately colourless, because
-                                  there's nothing to show
-  Set it per card with  style="--accent:#XXXXXX"  and everything
-  else follows. The shell stays neutral so these read as signal.
-
-  ADDING SCREENSHOTS
-  Drop any number of <figure class="shot"> into .proj-shots.
-  One or two sit side by side; three or more wrap. All of them
-  open in the lightbox on click.
-
-  EDIT:
-    - GitHub URLs (Shed, Wardrobe AI)
-    - Shed stack tags
-    - Wardrobe AI: what's unfinished + screenshots
-    - projects/shed.html and projects/wardrobe.html don't exist yet
-  ============================================================
--->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -87,7 +61,6 @@
         </p>
         <div class="links rv" style="--d:.3s">
           <a href="mailto:garrett.michael@outlook.com">garrett.michael@outlook.com</a>
-          <!-- EDIT: final GitHub URL -->
           <a href="https://github.com/Garrett391" target="_blank" rel="noopener">GitHub</a>
           <a href="https://www.linkedin.com/in/garrett-michael" target="_blank" rel="noopener">LinkedIn</a>
         </div>
@@ -159,8 +132,6 @@
               <span class="chip solid">Personal</span>
               <h3>Shed</h3>
               <a class="proj-src play" href="shed/" target="_blank" rel="noopener">Play in browser</a>
-              <!-- EDIT: add back once the Expo source is in its own public repo.
-                   Do NOT point this at /shed/ — that folder is build output. -->
             </div>
             <dl class="pae">
               <div><dt>Problem</dt><dd>Shed — also called Palace or Karma — is easy to play and
@@ -191,15 +162,11 @@
       </article>
 
       <!-- ── WARDROBE AI ── -->
-      <!-- EDIT: when the screenshots arrive, move this into a .proj-feature like the two
-           above and drop the figures into .proj-shots. -->
       <article class="proj rv" style="--accent:#C08A5A">
         <div class="proj-quiet">
           <div class="proj-head">
             <span class="chip">In progress</span>
             <h3>Wardrobe AI</h3>
-            <!-- EDIT: add a source link once the repo is public.
-                 Check for a committed OpenAI key first. -->
           </div>
           <dl class="pae">
             <div><dt>Problem</dt><dd>I own more clothes than outfit ideas, and generic style advice
@@ -207,7 +174,6 @@
             <div><dt>Approach</dt><dd>Photograph each item and store it in SQLite tagged by colour
               and category, then hand the catalogue plus an anchor piece and occasion filters to an
               LLM that proposes complete outfits.</dd></div>
-            <!-- EDIT: say plainly what's left -->
             <div><dt>Result</dt><dd>Cataloguing and generation run end to end locally.
               Still unfinished: &mdash;</dd></div>
           </dl>
@@ -271,7 +237,6 @@
           <p class="role-when">Oct 2022 &mdash; Jun 2025</p>
           <div>
             <h4>Data Scientist</h4>
-            <!-- EDIT: name one product you built and who used it -->
             <p>Built and maintained the databases and dashboards behind technical directives,
                engineering investigations, first articles and critical item management. Owned the
                data model and the reporting layer end to end.</p>
@@ -281,7 +246,6 @@
           <p class="role-when">Sep 2019 &mdash; Oct 2022</p>
           <div>
             <h4>Operations Research Analyst</h4>
-            <!-- EDIT -->
             <p>Cleaned, analyzed and visualized maintenance and logistics data. Designed databases
                and internal tools with Access, VBA and SQL, and built the reporting layer analysts
                used daily.</p>
@@ -344,7 +308,7 @@
   </section>
 
   <footer class="foot wrap">
-    <span class="k">Updated August 2026</span>
+    <span class="k">Updated September 2026</span>
   </footer>
 
 </main>
